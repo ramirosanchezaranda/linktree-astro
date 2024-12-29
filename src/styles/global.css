@@ -18,9 +18,15 @@
   /* Aplica la fuente global */
   :root {
     --font-family: 'Space Mono', monospace;
+    
   }
   
   body {
     font-family: var(--font-family);
   }
-  
+  :root[data-theme="brutalist"] {
+    --font-family: 'Space Mono', monospace;
+  }
+  :root[data-theme="modern"] {
+    --font-family: 'Inter', sans-serif;
+  }
