@@ -30,3 +30,8 @@
   :root[data-theme="modern"] {
     --font-family: 'Inter', sans-serif;
   }
+  iframe {
+    max-width: 100%;
+    height: auto;
+    border: 0; /* Sin bordes */
+  }
