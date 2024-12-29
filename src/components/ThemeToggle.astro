@@ -1,0 +1,53 @@
+<button id="theme-toggle" aria-label="Toggle theme">
+  <i class="ri-sun-line"></i>
+</button>
+
+<style>
+  #theme-toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: var(--card-bg);
+    border: 2px solid var(--card-border);
+    color: var(--text-color);
+    width: 45px;
+    height: 45px;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s;
+    backdrop-filter: blur(8px);
+  }
+
+  #theme-toggle:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px var(--card-border);
+  }
+</style>
+
+<script>
+  const themeToggle = document.getElementById('theme-toggle');
+  const icon = themeToggle?.querySelector('i');
+  
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateIcon(savedTheme);
+
+  themeToggle?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+    
+    document.documentElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+    updateIcon(newTheme);
+  });
+
+  function updateIcon(theme: string) {
+    if (icon) {
+      icon.className = theme === 'light' ? 'ri-sun-line' : 'ri-moon-line';
+    }
+  }
+</script>
